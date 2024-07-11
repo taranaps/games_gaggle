@@ -3,29 +3,29 @@ const spinBtn = document.getElementById("spin-btn");
 const finalValue = document.getElementById("final-value");
 //Object that stores values of minimum and maximum angle for a value
 const rotationValues = [ 
-  { minDegree: 0, maxDegree: 30, value: 2 },
-  { minDegree: 31, maxDegree: 90, value: 1 },
-  { minDegree: 91, maxDegree: 150, value: 6 },
-  { minDegree: 151, maxDegree: 210, value: 5 },
-  { minDegree: 211, maxDegree: 270, value: 4 },
-  { minDegree: 271, maxDegree: 330, value: 3 },
-  { minDegree: 331, maxDegree: 360, value: 2 },
+  { minDegree: 0, maxDegree: 30, value: 'Memory Game' },
+  { minDegree: 31, maxDegree: 90, value: 'Rock Paper Scissor' },
+  { minDegree: 91, maxDegree: 150, value: 'Breakout' },
+  { minDegree: 151, maxDegree: 210, value: 'Frogger' },
+  { minDegree: 211, maxDegree: 270, value: 'Whack A Mole' },
+  { minDegree: 271, maxDegree: 330, value: 'Connect Four' },
+  { minDegree: 331, maxDegree: 360, value: 'Memory Game' },
 ];
 //Size of each piece
 const data = [16, 16, 16, 16, 16, 16];
 //background color for each piece
 var pieColors = [
-  "#8b35bc",
-  "#b163da",
-  "#8b35bc",
-  "#b163da",
-  "#8b35bc",
-  "#b163da",
+  "#9be198",
+  "#1c9518",
+  "#9be198",
+  "#1c9518",
+  "#9be198",
+  "#1c9518",
 ];
 //Create chart
 let myChart = new Chart(wheel, {
   //Plugin for displaying text on pie chart
-  plugins: [ChartDataLabels],
+  //plugins: [ChartDataLabels],
   //Chart Type Pie
   type: "pie",
   data: {
@@ -49,12 +49,51 @@ let myChart = new Chart(wheel, {
       legend: {
         display: false,
       },
+      /*
       //display labels inside pie chart
       datalabels: {
         color: "#ffffff",
         formatter: (_, context) => context.chart.data.labels[context.dataIndex],
         font: { size: 24 },
       },
+      */
+      //display images as labels inside pie chart
+      labels: {
+        render: 'image',
+        images: [
+          {
+            src: 'https://img.icons8.com/?size=100&id=ZCMXN2dhBcvi&format=png&color=000000',
+            width: 100,
+            height: 100
+          },
+          {
+            src: 'https://img.icons8.com/?size=100&id=9MHyhCngdVaI&format=png&color=000000',
+            width: 100,
+            height: 100
+          },
+          {
+            src: 'https://img.icons8.com/?size=100&id=sO8340DJmnua&format=png&color=000000',
+            width: 100,
+            height: 100
+          },
+          {
+            src: 'https://img.icons8.com/?size=100&id=AZMANusnpcG9&format=png&color=000000',
+            width: 100,
+            height: 100
+          },
+          {
+            src: 'https://img.icons8.com/?size=100&id=LnSS3EpeKOG8&format=png&color=000000',
+            width: 100,
+            height: 100
+          },
+          {
+            src: 'https://img.icons8.com/?size=100&id=itinYvTkMPan&format=png&color=000000',
+            width: 100,
+            height: 100
+          }
+        ]
+      },
+      
     },
   },
 });
@@ -66,12 +105,12 @@ const spinAgainBtn = document.getElementById("spin-again-btn");
 
 // Map each value to its respective HTML page
 const pageMap = {
-  1: "rock-paper-scissor/index.html",
-  2: "memory-game/index.html",
-  3: "connect-four/index.html",
-  4: "whack-a-mole/index.html",
-  5: "frogger/index.html",
-  6: "breakout/index.html",
+  'Rock Paper Scissor': "rock-paper-scissor/index.html",
+  'Memory Game': "memory-game/index.html",
+  'Connect Four': "connect-four/index.html",
+  'Whack A Mole': "whack-a-mole/index.html",
+  'Frogger': "frogger/index.html",
+  'Breakout': "breakout/index.html",
 };
 
 //display result based on the randomAngle
@@ -79,7 +118,7 @@ const valueGenerator = (angleValue) => {
   for (let i of rotationValues) {
     if (angleValue >= i.minDegree && angleValue <= i.maxDegree) {
       const pageUrl = pageMap[i.value];
-      modalMessage.textContent = `Value: ${i.value}`;
+      modalMessage.textContent = `You Got: ${i.value}!`;
       modal.style.display = "block";
       playBtn.onclick = () => {
         window.location.href = pageUrl;
