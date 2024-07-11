@@ -2,7 +2,7 @@ const wheel = document.getElementById("wheel");
 const spinBtn = document.getElementById("spin-btn");
 const finalValue = document.getElementById("final-value");
 //Object that stores values of minimum and maximum angle for a value
-const rotationValues = [
+const rotationValues = [ 
   { minDegree: 0, maxDegree: 30, value: 2 },
   { minDegree: 31, maxDegree: 90, value: 1 },
   { minDegree: 91, maxDegree: 150, value: 6 },
@@ -58,17 +58,41 @@ let myChart = new Chart(wheel, {
     },
   },
 });
-//display value based on the randomAngle
+
+const modal = document.getElementById("popup-modal");
+const modalMessage = document.getElementById("modal-message");
+const playBtn = document.getElementById("play-btn");
+const spinAgainBtn = document.getElementById("spin-again-btn");
+
+// Map each value to its respective HTML page
+const pageMap = {
+  1: "rock-paper-scissor/index.html",
+  2: "memory-game/index.html",
+  3: "connect-four/index.html",
+  4: "whack-a-mole/index.html",
+  5: "frogger/index.html",
+  6: "breakout/index.html",
+};
+
+//display result based on the randomAngle
 const valueGenerator = (angleValue) => {
   for (let i of rotationValues) {
-    //if the angleValue is between min and max then display it
     if (angleValue >= i.minDegree && angleValue <= i.maxDegree) {
-      finalValue.innerHTML = `<p>Value: ${i.value}</p>`;
+      const pageUrl = pageMap[i.value];
+      modalMessage.textContent = `Value: ${i.value}`;
+      modal.style.display = "block";
+      playBtn.onclick = () => {
+        window.location.href = pageUrl;
+      };
       spinBtn.disabled = false;
       break;
     }
   }
 };
+
+spinAgainBtn.addEventListener("click", () => {
+  modal.style.display = "none";
+});
 
 //Spinner count
 let count = 0;
