@@ -1,54 +1,55 @@
-const computerChoiceDisplay = document.getElementById('computer-choice')
-const userChoiceDisplay = document.getElementById('user-choice')
-const resultDisplay = document.getElementById('result')
-const possibleChoices = document.querySelectorAll('button')
-let userChoice
-let computerChoice
-let result
+const resultDisplay = document.querySelector('#result')
+const choicesDisplay = document.querySelector('#choices')
+const playerScoreDisplay = document.querySelector('#player-score')
+const computerScoreDisplay = document.querySelector('#computer-score')
 
-possibleChoices.forEach(possibleChoice => possibleChoice.addEventListener('click', (e) => {
-  userChoice = e.target.id
-  userChoiceDisplay.innerHTML = userChoice
-  generateComputerChoice()
-  getResult()
-}))
-
-function generateComputerChoice() {
-  const randomNumber = Math.floor(Math.random() * 3) + 1 // or you can use possibleChoices.length
-  
-  if (randomNumber === 1) {
-    computerChoice = 'rock'
-  }
-  if (randomNumber === 2) {
-    computerChoice = 'scissors'
-  }
-  if (randomNumber === 3) {
-    computerChoice = 'paper'
-  }
-  computerChoiceDisplay.innerHTML = computerChoice
+const choices = ['rock', 'paper', 'scissors']
+const choiceImages = {
+  rock: 'images/rock.svg',
+  paper: 'images/paper.svg',
+  scissors: 'images/scissor.svg'
 }
 
-function getResult() {
-  if (computerChoice === userChoice) {
-    result = 'its a draw!'
-  }
-  if (computerChoice === 'rock' && userChoice === "paper") {
-    result = 'you win!'
-  }
-  if (computerChoice === 'rock' && userChoice === "scissors") {
-    result = 'you lost!'
-  }
-  if (computerChoice === 'paper' && userChoice === "scissors") {
-    result = 'you win!'
-  }
-  if (computerChoice === 'paper' && userChoice === "rock") {
-    result = 'you lose!'
-  }
-  if (computerChoice === 'scissors' && userChoice === "rock") {
-    result = 'you win!'
-  }
-  if (computerChoice === 'scissors' && userChoice === "paper") {
-    result = 'you lose!'
+let playerScore = 0
+let computerScore = 0
+
+const handleClick = (e) => {
+  const userChoice = e.target.alt
+  const computerChoice = choices[Math.floor(Math.random() * choices.length)]
+  getResults(userChoice, computerChoice)
+}
+
+choices.forEach(choice => {
+  const button = document.createElement('img')
+  button.src = choiceImages[choice]
+  button.alt = choice
+  button.addEventListener('click', handleClick)
+  choicesDisplay.appendChild(button)
+})
+ 
+const getResults = (userChoice, computerChoice) => {
+  let result = ''
+
+  switch (userChoice + computerChoice) {
+    case 'scissorspaper':
+    case 'rockscissors':
+    case 'paperrock':
+      result = 'Your Choice: ' + userChoice + "<br />" + 'Computer\'s Choice: ' + computerChoice + "<br />" + "<br />" + 'YOU WIN!'
+      playerScore++
+      break
+    case 'paperscissors':
+    case 'scissorsrock':
+    case 'rockpaper':
+      result = 'Your Choice: ' + userChoice + "<br />" + 'Computer\'s Choice: ' + computerChoice + "<br />" + "<br />" + 'YOU LOSE!'
+      computerScore++
+      break
+    case 'scissorsscissors':
+    case 'rockrock':
+    case 'paperpaper':
+      result = 'Your Choice: ' + userChoice + "<br />" + 'Computer\'s Choice: ' + computerChoice + "<br />" + "<br />" + 'IT\'S A DRAW!'
+      break
   }
   resultDisplay.innerHTML = result
+  playerScoreDisplay.innerHTML = playerScore
+  computerScoreDisplay.innerHTML = computerScore
 }
