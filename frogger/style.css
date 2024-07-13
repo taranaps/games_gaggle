@@ -1,9 +1,80 @@
-.grid {
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Pixelify Sans", sans-serif;
+  }
+  
+  body {
+    height: 100vh;
+    background: linear-gradient(135deg, #66b464, #1c9518);
+  }
+  
+  .title-wrapper, .wrapper { 
+    width: 90%;
+    max-width: 34.37em;
+    background-color: #ffffff;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    padding: 1em;
+    border-radius: 1em;
+    box-shadow: 0 4em 5em rgba(5, 222, 88, 0.2);
+  }
+  
+  .title-wrapper {
+    top: 10%;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  .wrapper {
+    top: 55%;
+    padding: 3em;
+  }
+  
+  .container, .title-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+  }
+  /*
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }*/
+  #start-pause-button {
+    margin-bottom: 1em;
+  }
+  
+  #result {
+    text-align: center;
+    margin-top: 1em; /* Optional: Adds some spacing between the result and the buttons */
+  }
+  
+  .scores {
+    margin-top: 2em;
+    text-align: center;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .wrapper {
+        font-size: 12px;
+    }
+  }
+
+  .grid {
     border: 1px solid black;
-    height: 180px;
-    width: 180px;
+    height: 182px;
+    width: 182px;
     display: flex;
     flex-wrap: wrap;
+    margin-top: 2em;
+    margin: 0 auto;
 }
 
 .grid div {
@@ -38,4 +109,4 @@
     background-color: green;
 }
 
-
+  

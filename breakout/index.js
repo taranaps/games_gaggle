@@ -134,7 +134,7 @@ function checkForCollisions() {
         clearInterval(timerId)
         document.removeEventListener('keydown', moveUser)
       }
-    }
+    } 
   }
   // check for wall hits
   if (ballCurrentPosition[0] >= (boardWidth - ballDiameter) || ballCurrentPosition[0] <= 0 || ballCurrentPosition[1] >= (boardHeight - ballDiameter))

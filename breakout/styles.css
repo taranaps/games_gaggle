@@ -1,9 +1,12 @@
 .grid {
-  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
   width: 560px;
   height: 300px;
   border: solid 1px black;
   margin-top: 100px;
+  margin: 0 auto;
 }
 
 .user {
@@ -26,4 +29,63 @@
   height: 20px;
   border-radius: 10px;
   background-color: red;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Pixelify Sans", sans-serif;
+}
+
+body {
+  height: 100vh;
+  background: linear-gradient(135deg, #66b464, #1c9518);
+}
+
+.title-wrapper, .wrapper { 
+  width: 90%;
+  max-width: 54.37em;
+  background-color: #ffffff;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  padding: 1em;
+  border-radius: 1em;
+  box-shadow: 0 4em 5em rgba(5, 222, 88, 0.2);
+}
+
+.title-wrapper {
+  top: 10%;
+}
+
+h1 {
+  text-align: center;
+}
+
+.wrapper {
+  top: 55%;
+  padding: 3em;
+}
+
+.container, .title-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+ 
+.scores {
+  margin-top: 2em;
+  text-align: center;
+}
+
+#score {
+  text-align: center;
+  margin-top: 1em; /* Optional: Adds some spacing between the result and the buttons */
+}
+
+@media screen and (max-width: 768px) {
+  .wrapper {
+      font-size: 12px;
+  }
 }
