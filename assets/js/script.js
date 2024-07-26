@@ -7,7 +7,7 @@ const rotationValues = [
   { minDegree: 31, maxDegree: 90, value: 'Rock Paper Scissor' },
   { minDegree: 91, maxDegree: 150, value: 'Breakout' },
   { minDegree: 151, maxDegree: 210, value: 'Frogger' },
-  { minDegree: 211, maxDegree: 270, value: 'Whack A Mole' },
+  { minDegree: 211, maxDegree: 270, value: 'Whac A Mole' },
   { minDegree: 271, maxDegree: 330, value: 'Connect Four' },
   { minDegree: 331, maxDegree: 360, value: 'Memory Game' },
 ];
@@ -108,7 +108,7 @@ const pageMap = {
   'Rock Paper Scissor': "rock-paper-scissor/index.html",
   'Memory Game': "memory-game/index.html",
   'Connect Four': "connect-four/index.html",
-  'Whack A Mole': "whack-a-mole/index.html",
+  'Whac A Mole': "whac-a-mole/index.html",
   'Frogger': "frogger/index.html",
   'Breakout': "breakout/index.html",
 };
